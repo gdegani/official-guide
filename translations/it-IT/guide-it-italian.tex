@@ -1,8 +1,10 @@
-\documentclass[12pt,a4paper,parskip=full]{scrartcl}
-
+\documentclass[italian,12pt,a4paper,parskip=full]{scrartcl}
+\usepackage{float}
 \usepackage{bbding}
 \usepackage{pifont}
 \usepackage{wasysym}
+\usepackage[default,oldstyle,scale=1]{opensans}
+%\usepackage[T1]{fontenc}
 \usepackage[margin=1in]{geometry}
 \geometry{letterpaper}
 \usepackage{xcolor}
@@ -10,13 +12,16 @@
 \definecolor{gray}{HTML}{666666}
 \usepackage{sectsty}
 \sectionfont{\color{red}}
-\subsectionfont{\color{red}}
+\subsectionfont{\fontsize{25}{25}\color{red}}
+
+\subsubsectionfont{\fontsize{20}{20}\color{red}}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{amssymb}
 \usepackage[style=footnote-dw]{biblatex}
 \bibliography{S@SGuideBib}
 \setlength\bibitemsep{0.5\baselineskip}
+\graphicspath{{./images/} {../../images/}}
 
 \usepackage{enumitem}
 \setitemize{noitemsep}
@@ -34,6 +39,7 @@
 \fontfamily{verdana}
 
 \usepackage{scrlayer-scrpage}{}
+\usepackage[utf8]{inputenc}
 \makeatletter
 \renewcommand{\@seccntformat}[1]{}
 \makeatother
@@ -50,72 +56,79 @@
 
 \begin{document}
 
+ \subsection{Prefazione alla Guida a Scrum@Scale}\label{preface-to-the-ScrumatScale-guide}
+
+ Scrum, come originariamente descritto nella Scrum Guide, is focused on a single Scrum Team being able to deliver optimal value while maintaining a sustainable pace. Since its inception, the usage of Scrum has extended to the creation of products, processes, and services that require the efforts of multiple teams.
+
+ In the field, it was repeatedly observed that as the number of Scrum Teams within an organization grew, two major issues emerged:
+
 %\tableofcontents
 %\newpage
 
 \section{Scopo della Guida a Scrum@Scale}
 Scrum, come originariamente descritto nella Scrum Guide, è un 
-framework per sviluppare, consegnare e mantenere prodotti complessi da 
-un singolo team. Fin dalla nascita, il suo uso si è esteso alla creazione di 
-prodotti, processi, servizi e sistemi che richiedevano il lavoro di più team.
+framework per sviluppare, consegnare e mantenere prodotti complessi da parte di
+ un singolo team. Fin dalla nascita, il suo uso si è esteso alla creazione di
+prodotti, processi, servizi e sistemi che richiedono il lavoro di più team.
 Scrum@Scale è stato creato per coordinare efficientemente questo nuovo 
-ecosistema di team in un modo da ottimizzarsi per perseguire la strategia 
+ecosistema di team in modo da ottimizzare la strategia 
 globale dell'organizzazione. Viene raggiunto questo obiettivo creando la 
 minima burocrazia possibile grazie ad una architettura scale-free (architettura ad invarianza di scala - ndt), che estende naturalmente il modo in cui i singoli team Scrum funzionano lungo tutta l'organizzazione.
 
-Questa guida contiene la definizione dei componenti che costituiscono Scrum@Scale, includendo i corrispondenti su larga scala dei ruoli, degli eventi, degli artefatti di Scrum e le regole che li tengono insieme.
+Questa guida contiene la definizione dei componenti che costituiscono Scrum@Scale, includendo i corrispondenti su larga scala dei ruoli, degli eventi, dei manufatti di Scrum, e le regole che li tengono insieme.
 
-Il Dr. Jeff Sutherland ha sviluppato Scrum@Scale basandosi sui principi fondamentali di Scrum, sulla teoria dei sistemi adattivi complessi, sulla teoria dei giochi e sulla programmazione ad oggetti. Questa guida è stata sviluppata grazie ai suggerimenti di numerosi esperti praticanti di Scrum ed è basata sui risultati del loro lavoro. L'obiettivo di questa guida è di rendere il lettore in grado di implementare Scrum@Scale in autonomia.
+Il Dr. Jeff Sutherland ha sviluppato Scrum@Scale basandosi sui principi fondamentali di Scrum, sulla teoria dei sistemi adattivi complessi, sulla teoria dei giochi e sul suo lavoro in biologia. Questa guida è stata sviluppata grazie ai suggerimenti di numerosi esperti praticanti di Scrum ed è basata sui risultati del loro lavoro. 
 
 \subsection{Perché Scrum@Scale?}
 Scrum è stato disegnato per permettere ad un singolo team di lavorare 
 alla sua capacità ottimale mantenendo un ritmo sostenibile. Sul campo è
 stato notato che all'aumentare dei team Scrum all'interno di una organizzazione,
-la produzione (di prodotto funzionante) e la velocity di questi team iniziava a
-decadere (a causa di problemi come le dipendenze tra team e la duplicazione
-del lavoro). Diventava quindi ovvio che serviva un framework per coordinare 
+il risultato (prodotto funzionante) e la velocità (produttività misurata a fine sprint - ndt) di questi team iniziavano a decadere (a causa di problemi come le dipendenze tra team e la duplicazione del lavoro). Diventò quindi ovvio che serviva una infrastruttura per coordinare 
 efficacemente questi team in modo da ottenere una scalabilità lineare.
-Scrum@Scale è stato ideato per raggiungere questo obiettivo grazie alla
+Scrum@Scale è stato progettato per raggiungere questo obiettivo grazie alla
 sua architettura scale-free.
 
-Utilizzando un'architettura scale-free, l'organizzazione non è 
+Le architetture scale-free sono comuni nei sistemi biologici come il corpo umano, e nella progettazione di circuiti integrati che richiede di inserire miliardi di transistor in un chip. Utilizzando un'architettura scale-free, l'organizzazione non è 
 vincolata a crescere in un particolare modo o secondo un insieme arbitrario di
 regole; invece può crescere in maniera organica basandosi sui suoi personali
 bisogni e ad un ritmo di cambiamento sostenibile, che possa essere 
-accettato dai gruppi e dagli individui che compongono l'organizzazione.
+accettato dai gruppi e dagli individui che compongono l'organizzazione. La semplicità del modello Scrum@Scale è essenziale per una architettura scale-free ed evita attentamente di introdurre della complessità aggiuntiva che provocherebbe una diminuzione della produttività del singolo team al crescere del numero di team.
 
-Scrum@Scale è pensato per estendersi lungo tutta l'organizzazione: tutti
+Scrum@Scale è progettato per estendersi lungo tutta l'organizzazione: tutti
 i dipartimenti, prodotti e servizi. Può essere applicato in diversi domini
-e su qualsiasi tipo di organizzazione sia nell'industria, nei governi o nelle accademie.
+e su qualsiasi tipo di organizzazione nell'industria, nei governi o nelle accademie. Scrum@Scale consente ad intere organizzazioni di produrre più valore ad un ritmo più rapido ma comunque sostenibile.
 
 \subsection{Definizione di Scrum@Scale}
-Scrum: Un framework con cui le persone possono risolvere problemi adattivi complessi,
-realizzando creativamente prodotti funzionanti con il più alto valore possibile.
+\textbf{Scrum}: Un framework con cui le persone possono risolvere problemi adattivi complessi,
+realizzando creativamente prodotti o servizi con il più alto valore possibile.
 
 La Scrum Guide è l'insieme minimo di regole che permettono ispezione e adattabilità
 attraverso una trasparenza radicale per creare innovazione, soddisfazione dei clienti,
 performance e felicità del team.
 
-Scrum@Scale: Un framework con cui una rete di team Scrum opera in maniera consistente
-alla Scrum Guide per indirizzare problemi adattivi complessi producendo e creando creativamente dei prodotti funzionanti del più alto valore possibile.
-
-\textbf{NOTA:} Questi ``prodotti'' possono essere hardware, software, sistemi complessi integrati, processi, servizi, ecc., a seconda del dominio dei team Scrum.
-
+\textbf{Scrum@Scale}: Un framework con cui una rete di team Scrum opera in maniera consistente
+alla Scrum Guide per affrontare problemi adattivi complessi producendo creativamente prodotti  o servizi del più alto valore possibile.
+\textbf{NOTA:} Questi ``prodotti'' possono essere hardware, software, sistemi complessi integrati, processi, servizi, ecc., a seconda del dominio dei team Scrum. Questi “servizi” possono essere servizi di supporto, di riparazione, di manutenzione o servizi governativi.
+ 
 Scrum@Scale è:
 \begin{itemize}
-\item Leggero - la minima burocrazia sostenibile
+\item Leggero - la minima burocrazia possibile
 \item Semplice da capire - consiste soltanto di team Scrum
 \item Difficile da padroneggiare - richiede di implementare un nuovo modello operativo
 \end{itemize}
 
-Scrum@Scale è un framework per scalare Scrum (estendere Scrum ad una scala più ampia - ndt). Questo è semplificato radicalmente in quanto si usa Scrum per scalare Scrum.
+Scrum@Scale è un framework per scalare Scrum (estendere Scrum ad una scala più ampia - ndt). Semplifica radicalmente l'estensione in quanto usa Scrum per scalare Scrum.
+
+Scrumm@Scale costiste di componenti che consentono ad una organizzazione di personalizzare la propria strategia di trasformazione ed implementazione. Permette di indirizzare le azioni di cambiamento incrementalmente, dando priorità alle aree che si ritiene più importanti o più bisognose di cambiamento, e di progredire successivamente nelle altre.
+
+In Scrum, la rimozione degli impedimenti è un componente centrale per aumentare la velocità del team.In Scrum@Scale la rimozione degli impedimenti è applicata estensivamente per aumentare la velocitòà dell'intera organizzazione.
 
 In Scrum, è stato separata con cura la responsabilità del ``cosa'' dal ``come''.
-La stessa cura è stata mantenuta in Scrum@Scale in modo che la giurisdizione e le responsabilità siano espressamente comprese in modo da eliminare conflitti organizzativi e sprechi che impediscano ai team di raggiungere la loro produttività ottimale.
-
-Scrum@Scale è costituito da componenti che consentono ad un'organizzazione di personalizzare la propria strategia di trasformazione e implementazione. Permette di indirizzare le azioni di cambiamento incrementalmente, dando priorità alle aree che si ritiene più importanti o più bisognose di cambiamento, e di progredire successivamente nelle altre.
+La stessa cura è stata mantenuta in Scrum@Scale in modo che la giurisdizione e le responsabilità siano chiaramente comprese in modo da eliminare conflitti organizzativi e sprechi che impediscano ai team di raggiungere la loro produttività ottimale.
 
 Nel separare queste due giurisdizioni, Scrum@Scale contiene due cicli: il ciclo degli Scrum Master (il ``come'') ed il ciclo dei Product Owner (il ``cosa''), intersecandosi in due punti. Presi insieme, questi cicli producono una potente struttura per coordinare gli sforzi di più team lungo un singolo percorso.
+
+Scrum@Scale può essere applicato quando un'organizzazione ha posizioni organizzative che corrispondono ai ruoli di Scrum. In altre parole, Scrum@Scale funziona se titoli professionali quali Scrum Master e Product Owner definiscono delle posizioni all'interno dell'organizzazione. Scrum@Scale funziona anche quando le posizioni organizzative non corrispondono ai ruoli Scrum. In questi casi una persona può essere assunta come progect manager (posizione) ma può servire un team Scrum come Product Owner (ruolo). Non ci sono conflitti fra ruoli e posizioni. Nelle organizzazioni agili dove ruoli (Scrum Master) e posizioni (regional manager) non corrispondono, bisogna dedicare molta attenzione alla loro armonizzazione. Armonizzare ruoli e posizioni può essere importante per l'estensione (scaling) di Scrum come ogni altro fattore. Organi di gestione e controllo aziendale, ruoli e posizioni dovrebbero essere allineati in ogni organizzazione che applica Scrum per garantire che Scrum possa scalare e mantenere sia la velocità dei team che la loro capacità di creare prodotti o servizi di valore. Gli organi aziendali di gesione e controllo dovrebbero rivolgersi a chi ha l'autorità di rimuovere gli impedimenti.
 
 \subsection{I componenti del framework Scrum@Scale\textregistered}
 

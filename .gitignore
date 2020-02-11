@@ -5,3 +5,12 @@
 *.out
 *.run.xml
 *.synctex.gz
+*.bbl
+*.blg
+
+# VIM
+*.swp
+
+#Jetbrains
+.idea
+*.iml
